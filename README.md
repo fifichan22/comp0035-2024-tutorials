@@ -1,5 +1,7 @@
 # COMP0035 2024-25 Computer practicals
 
+Introduction
+
 This repository contains the practicals for the COMP0035 module for the academic year 2024-25.
 
 ## Instructions for using this repository
