@@ -33,4 +33,15 @@ print('columns:', missing_columns)
 missing_columns_fill = df_prepared[df_prepared.isna().any(axis=0)]
 print(missing_columns_fill)'''
 
-print(df_prepared['type'].unique())
+# Convert 'start' and 'end' columns to datetime format with dayfirst=True
+df_prepared['start'] = pd.to_datetime(df_prepared['start'], errors='coerce', dayfirst=True)
+df_prepared['end'] = pd.to_datetime(df_prepared['end'], errors='coerce', dayfirst=True)
+
+# Calculate the duration in days and add it at the end
+df_prepared['duration'] = (df_prepared['end'] - df_prepared['start']).dt.days
+
+# Fill NaN values in 'duration' with 0 and convert to integer
+df_prepared['duration'] = df_prepared['duration'].fillna(0).astype(int)
+
+# Print the resulting DataFrame
+print(df_prepared)
