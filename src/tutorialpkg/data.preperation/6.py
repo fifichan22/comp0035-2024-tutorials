@@ -45,3 +45,10 @@ df_prepared['duration'] = df_prepared['duration'].fillna(0).astype(int)
 
 # Print the resulting DataFrame
 print(df_prepared)
+
+# Define the path to save the prepared CSV file in the 'data' directory
+output_csv_path = Path(__file__).parent.parent.joinpath('data', 'paralympics_events_prepared.csv')
+
+# Save the DataFrame to a CSV file without the index column
+df_prepared.to_csv(output_csv_path, index=False)
+
